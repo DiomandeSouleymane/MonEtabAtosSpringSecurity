@@ -1,4 +1,5 @@
 package ci.digitalacademy.monEtab.services.impl;
+
 import ci.digitalacademy.monEtab.models.Teacher;
 import ci.digitalacademy.monEtab.repositories.TeacherRepository;
 import ci.digitalacademy.monEtab.services.TeacherService;
@@ -18,6 +19,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     private final TeacherRepository teacherRepository;
     private final TeacherMapper teacherMapper;
+
     @Override
     public TeacherDTO save(TeacherDTO teacherDTO) {
         Teacher teacher = teacherMapper.DtoToEntity(teacherDTO);
@@ -27,12 +29,19 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public TeacherDTO update(TeacherDTO teacherDTO) {
 
-        return findById(teacherDTO.getId()).map(existingTeacher ->{
+        return findById(teacherDTO.getId()).map(existingTeacher -> {
             Teacher teacher = teacherMapper.DtoToEntity(teacherDTO);
             teacher.setLastName(existingTeacher.getLastName());
             return save(existingTeacher);
-        }).orElseThrow(()-> new RuntimeException("Teacher not found"));
+        }).orElseThrow(() -> new RuntimeException("Teacher not found"));
     }
+
+    @Override
+    public TeacherDTO update(TeacherDTO teacherDTO, Long id) {
+        teacherDTO.setId(id);
+        return update(teacherDTO);
+    }
+
 
     @Override
     public Optional<TeacherDTO> findById(Long id) {
@@ -53,7 +62,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public List<TeacherDTO> findByLastNameOrSpecialtyAndGender(String query, String gender) {
-        List<Teacher> teachers = teacherRepository.findByLastNameOrSpecialtyAndGender(query , query , Gender.valueOf(gender));
+        List<Teacher> teachers = teacherRepository.findByLastNameOrSpecialtyAndGender(query, query, Gender.valueOf(gender));
         return teachers.stream().map(teacher -> teacherMapper.ToDto(teacher)).toList();
     }
 

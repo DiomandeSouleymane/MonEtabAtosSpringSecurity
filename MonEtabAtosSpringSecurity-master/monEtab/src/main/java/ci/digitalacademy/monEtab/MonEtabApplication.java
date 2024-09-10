@@ -29,6 +29,7 @@ public class MonEtabApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
+
 		String passwordAdmin = passwordEncoder.encode("admin");
 
 		UserDTO admin = new UserDTO();
@@ -42,10 +43,12 @@ public class MonEtabApplication implements CommandLineRunner {
 
 		UserDTO user = new UserDTO();
 		user.setPseudo("user");
+
 		user.setPassword(passwordUser);
 		user.setCreatedDate(Instant.now());
 
 		userService.save(user);
+
 
 
 

@@ -52,6 +52,17 @@ public class StudentServiceImpl implements StudentService {
         }
     }
 
+    @Override
+    public Optional<StudentDTO> update(StudentDTO studentDTO, Long id) {
+
+        return findOne(id).map(student -> {
+            student.setFirstName(studentDTO.getFirstName());
+            student.setLastName(studentDTO.getLastName());
+            student.setMatricule(studentDTO.getMatricule());
+            return save(student);
+        });
+    }
+
 
     @Override
     public Optional<StudentDTO> findById(Long id) {
@@ -68,6 +79,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void deleteById(Long id) {
+
         studentRepository.deleteById(id);
     }
 
@@ -85,6 +97,6 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Optional<StudentDTO> findOne(Long id) {
-        return Optional.empty();
+        return studentRepository.findById(id).map(student -> studentMapper.ToDto(student));
     }
 }

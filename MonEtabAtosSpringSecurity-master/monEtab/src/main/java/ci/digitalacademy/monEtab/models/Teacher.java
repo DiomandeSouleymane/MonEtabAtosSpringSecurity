@@ -14,10 +14,7 @@ import lombok.*;
 @Table(name = "teacher")
 public class Teacher extends Person {
 
-    @Column(nullable = false)
     private Boolean available;
-
-    @Column(nullable = false)
     private String specialty;
 
 }

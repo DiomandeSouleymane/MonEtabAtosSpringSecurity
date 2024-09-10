@@ -19,7 +19,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests((authorize) -> authorize
                         .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.ERROR).permitAll()  // Autoriser les types de requêtes FORWARD et ERROR
                         .requestMatchers("/fontawesome/**").permitAll()
-                      /*  .requestMatchers("/**").permitAll()*/
+                        .requestMatchers("/api/students/**").permitAll()
+                        .requestMatchers("/api/teachers/**").permitAll()
                         .requestMatchers("/icons/**").permitAll()
                         .requestMatchers("/css/**").permitAll()  // Permettre l'accès aux ressources css
                         .requestMatchers("/icon/**").permitAll()  // Permettre l'accès aux ressources icon

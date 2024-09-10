@@ -12,6 +12,8 @@ public interface StudentService {
 
     StudentDTO update(StudentDTO studentDTO);
 
+    Optional<StudentDTO> update(StudentDTO studentDTO, Long id);
+
     Optional<StudentDTO> findById(Long id);
 
     List<StudentDTO> findAll();

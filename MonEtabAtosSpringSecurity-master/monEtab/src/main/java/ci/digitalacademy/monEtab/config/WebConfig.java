@@ -12,10 +12,10 @@ public class WebConfig implements WebMvcConfigurer {
 
     private final AppSettingInterceptorImpl appSettingInterceptor;
 
-    @Override
+   /* @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(appSettingInterceptor)
                 .addPathPatterns("/**") // Appliquer à toutes les pages
                 .excludePathPatterns("/login", "/settings", "/schools","/css/**", "/js/**", "/images/**","/fontawesome/**","/icons/**"); // Exclure les pages de config et statiques
-    }
+    }*/
 }

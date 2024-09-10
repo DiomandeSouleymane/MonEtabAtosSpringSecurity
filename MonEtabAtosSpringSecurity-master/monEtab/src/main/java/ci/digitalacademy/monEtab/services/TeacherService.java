@@ -1,7 +1,5 @@
 package ci.digitalacademy.monEtab.services;
 
-import ci.digitalacademy.monEtab.models.Teacher;
-import ci.digitalacademy.monEtab.models.enumeration.Gender;
 import ci.digitalacademy.monEtab.services.dto.TeacherDTO;
 
 import java.util.List;
@@ -11,6 +9,7 @@ public interface TeacherService {
 
     TeacherDTO save(TeacherDTO teacherDTO);
     TeacherDTO update(TeacherDTO teacherDTO);
+    TeacherDTO update(TeacherDTO teacherDTO, Long id);
     Optional<TeacherDTO> findById(Long id);
     List<TeacherDTO> findAll();
     void deleteById(Long id);

@@ -15,11 +15,11 @@ import java.util.Set;
 @Table(name = "student")
 public class Student extends Person {
 
-    @Column(unique=true , nullable=false , name = "matricule")
+    @Column( name = "matricule")
     private String matricule;
-    @Column(name = "phone_number_parent" , nullable = false)
+    @Column(name = "phone_number_parent" )
     private String phoneNumberFather;
-    @Column(unique=true , nullable=false , name = "classe")
+    @Column(name = "classe")
     private String classe;
     @OneToMany(  mappedBy = "student")
     @Column(nullable = true)
